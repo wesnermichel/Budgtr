@@ -9,7 +9,7 @@ const Budgets = require("./models/budget.js");
 
 //Middleware
 app.set("view engine", "ejs");
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
 app.use(methodOverride("_method"));
 app.use((req, res, next) => {
@@ -23,34 +23,41 @@ app.get("/", (req, res) => {
   console.log("Index forward slashed passed");
 });
 
-app.get("/index", (req, res) => {
+app.get("/budgets", (req, res) => {
   res.render("index.ejs", { Budgets: Budgets });
 });
 
+
+//NEW ROUTE
+app.get("/budgets/newitem", (req, res) => {
+  res.render("new.ejs"), console.log(req.body);
+});
+
+
 //SHOW ROUTE
-app.get("/show/:id", (req, res) => {
+app.get("/budgets/:id", (req, res) => {
   console.log("show route hit");
 
   const data = Budgets[req.params.id];
   res.render("show.ejs", { Budgets: data }); //whats to show and its data
 });
 
-//NEW ROUTE
-app.get("/newitem", (req, res) => {
-  res.render("new.ejs"), console.log(req.body);
-});
-
 //CREATE ROUTE
-app.post("/newitem", (req, res) => {
+app.post("/budgets", (req, res) => {
   // res.render("new.ejs");
-  res.send("this is working")
-  
   console.log(req.body);
+  req.body.amount=parseInt(req.body.amount);
   Budgets.push(req.body);
+  res.redirect('/budgets/');
 
 });
 
-
+//DELETE ROUTE
+app.delete("/budgets/id", (req, res) => {
+  Budgets.splice(req.body);// I think splice is for removing something from an array, you need to delete the whole entry
+  console.log(req.body);
+  res.redirect('/budgets/');
+});
 //BANK ACCOUNT
 
 // let bankAccount//if statement   & CSS

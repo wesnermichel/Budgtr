@@ -4,34 +4,64 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/normalize.css">
-    <link rel="stylesheet" href="/css/skeleton.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
 
     <title>Budgtr</title>
+    <% let total =0 %>
+<style>
+    table {
+  width: 100%;
+}
+th {
+  height: 30px;
+}
+body {
+            text-align: center;
+            background-color: #F0F0F0;
+}
+</style>
 </head>
 <body>
 <div class="container">
 <h1> Budgtr ALL</h1>
 
-<h1>Bank Account</h1>
-<div>  <button><a href="/newitem">Add New Item</button></div>
-<table>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+
+
+<table class="center">
  <tr>
     <th>Date</th>
     <th>From</th>
     <th>Amount</th>
   </tr>
       <% for(let i = 0; i < Budgets.length; i++) { %>
-
+<% total += Budgets[i].amount %>
 <tr>
   <th><%=Budgets[i].date %></th>
-<th><a href="/show/<%=i%>"><%=Budgets[i].from %></a></th>
+<th><a href="/budgets/<%=i%>"><%=Budgets[i].from %></a></th>
 <th><%=Budgets[i].amount %> </th>
 </tr>
 <% } %>
+<% let color = "white";
+                if (total > 1000) {
+                color = "green";
+                } else if (total < 0) {
+                    color = "red";
+                }%>
 
+                <h2 style="background-color: <%= color %>">
+                    Bank Account Balance: $<%= total%>                
+                </h2>
   </table>
-  <button><a href="/newitem">Add New Item</button>
+  <button><a href="/budgets/newitem">Add New Item</button>
   
+
+
+
 </body>
 </html>

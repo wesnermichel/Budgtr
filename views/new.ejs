@@ -4,11 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
 
+    <title>Budgtr</title>
+    <% let total =0 %>
+<style>
+    table {
+  width: 100%;
+}
+th {
+  height: 30px;
+}
+body {
+            text-align: center;
+            background-color: #F0F0F0;
+}
+</style>
+</head>
+<body>
+<div class="container">
 
-    <title>Add a new item </title>
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/NSbTwkm/logo.png" alt="logo" border="0"></a>
 </head>
 <body>
 <div class="container">
@@ -17,7 +34,7 @@
 <div class="container">
 <form name="budget" action="/budgets" method="POST">
 <p>Date</p>
-<input type="text" id="date" name="date" placeholder="Retirement"><br>
+<input type="text" id="date" name="date" placeholder="Eg. Apr 14"><br>
 <p>Name</p><br>
 <input type="text" id="name" name="name" placeholder="Retirement"><br>
 <p>Amount</p><br>
@@ -26,6 +43,7 @@
 <input type="text" id="from" name="from" placeholder="Country Bank">
 <p>Tags</p><br>
 <input type="text" id="tags" name="tags" placeholder="retirement, investing for the future">
+&nbsp&nbsp&nbsp
 <button type="submit"  >CREATE NEW ITEM</button>
 
 </form>
